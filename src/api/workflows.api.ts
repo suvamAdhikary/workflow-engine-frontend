@@ -13,28 +13,28 @@ export const workflowsApi = {
     limit?: number;
     enabled?: boolean;
   }): Promise<PaginatedResponse<Workflow>> => {
-    const response = await apiClient.get<ApiResponse<PaginatedResponse<Workflow>>>('/workflows', {
+    const response = await apiClient.get<ApiResponse<PaginatedResponse<Workflow>>>('/api/workflows', {
       params,
     });
     return response.data.data;
   },
 
   getById: async (id: string): Promise<Workflow> => {
-    const response = await apiClient.get<ApiResponse<Workflow>>(`/workflows/${id}`);
+    const response = await apiClient.get<ApiResponse<Workflow>>(`/api/workflows/${id}`);
     return response.data.data;
   },
 
   create: async (data: CreateWorkflowDto): Promise<Workflow> => {
-    const response = await apiClient.post<ApiResponse<Workflow>>('/workflows', data);
+    const response = await apiClient.post<ApiResponse<Workflow>>('/api/workflows', data);
     return response.data.data;
   },
 
   update: async (id: string, data: UpdateWorkflowDto): Promise<Workflow> => {
-    const response = await apiClient.patch<ApiResponse<Workflow>>(`/workflows/${id}`, data);
+    const response = await apiClient.patch<ApiResponse<Workflow>>(`/api/workflows/${id}`, data);
     return response.data.data;
   },
 
   delete: async (id: string): Promise<void> => {
-    await apiClient.delete(`/workflows/${id}`);
+    await apiClient.delete(`/api/workflows/${id}`);
   },
 };

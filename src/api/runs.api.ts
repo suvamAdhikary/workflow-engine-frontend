@@ -11,14 +11,14 @@ export const runsApi = {
     }
   ): Promise<PaginatedResponse<WorkflowRun>> => {
     const response = await apiClient.get<ApiResponse<PaginatedResponse<WorkflowRun>>>(
-      `/workflows/${workflowId}/runs`,
+      `/api/workflows/${workflowId}/runs`,
       { params }
     );
     return response.data.data;
   },
 
   getById: async (runId: string): Promise<WorkflowRun> => {
-    const response = await apiClient.get<ApiResponse<WorkflowRun>>(`/runs/${runId}`);
+    const response = await apiClient.get<ApiResponse<WorkflowRun>>(`/api/runs/${runId}`);
     return response.data.data;
   },
 
@@ -28,7 +28,7 @@ export const runsApi = {
     status?: string;
     workflowId?: string;
   }): Promise<PaginatedResponse<WorkflowRun>> => {
-    const response = await apiClient.get<ApiResponse<PaginatedResponse<WorkflowRun>>>('/runs', {
+    const response = await apiClient.get<ApiResponse<PaginatedResponse<WorkflowRun>>>('/api/runs', {
       params,
     });
     return response.data.data;
